@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Gstronomia',
+    'logo_img_alt' => 'Gastronomia',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,9 +65,9 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-info',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
 
@@ -228,29 +228,32 @@ return [
         // Navbar items:
         
         [
+            'type'         => 'navbar-search',
+            'text'         => 'search',
+            'topnav_right' => true,
+        ],
+        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        
+        [
+            'type' => 'sidebar-menu-search',
+            'text' => 'Buscar',
+        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'Usuarios',
-            'url'         => 'usuarios',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'Página',
-            'label_color' => 'warning',
-        ],
         ['header' => 'Configuracion de la cuenta'],
         [
             'text' => 'Perfil de usuario',
-            'url'  => 'user/profile',
+            'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-user',
+            'label'       => 'Página',
+            'label_color' => 'warning',
         ],
         [
             'text' => 'Cambiar contraseña',
@@ -262,11 +265,11 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Nivel uno',
+                    'text' => 'Calendario',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'Nivel dos',
+                    'text'    => 'Kanban board',
                     'url'     => '#',
                     'submenu' => [
                         [
@@ -290,24 +293,44 @@ return [
                     ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Extras',
                     'url'  => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'Iniciar sesión',
+                            'url'  => '#',
+                        ],
+                        [
+                            'text'    => 'Páginas',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'Nivel tres',
+                                    'url'  => '#',
+                                ],
+                                [
+                                    'text' => 'level_three',
+                                    'url'  => '#',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ],
         ['header' => 'labels'],
         [
-            'text'       => 'important',
+            'text'       => 'Importante',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Advertencia',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'Información',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],

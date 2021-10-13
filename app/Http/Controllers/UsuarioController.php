@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Session;
 
 
 class UsuarioController extends Controller
@@ -23,6 +24,7 @@ class UsuarioController extends Controller
         return view('Usuario.index')->with('usuarios',$usuarios);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -41,13 +43,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuarios = new Usuario();
-        $usuarios->codigo = $request->get('codigo');
-        $usuarios->descripcion = $request->get('descripcion');
-        $usuarios->cantidad = $request->get('cantidad');
-        $usuarios->precio = $request->get('precio');
+
+        
+        $usuarios = Usuario::create(['nombre_local' => $request->nombre_local,
+        'tipo_de_negocio' => $request->tipo_de_negocio,
+        'categoria' => $request->categoria,
+        'sucursales' => $request->sucursales,
+        'nombre' => $request->nombre,
+        'apellido' => $request->apellido,
+        'telefono' => $request->telefono,
+        'email' => $request->email,
+        'password' => $request->password,
+        'direccion_local' => $request->direccion_local,
+        'ref' => $request->ref,
+    ]);
+        
 
         $usuarios->save();
+        //$usuarios->destroy();//
 
         return redirect('/usuarios');
         
@@ -86,13 +99,20 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuarios = Usuario::find($id);
-        $usuarios->codigo = $request->get('codigo');
-        $usuarios->descripcion = $request->get('descripcion');
-        $usuarios->cantidad = $request->get('cantidad');
-        $usuarios->precio = $request->get('precio');
+        $usuarios->nombre_local = $request->get('nombre_local');
+        $usuarios->tipo_de_negocio = $request->get('tipo_de_negocio');
+        $usuarios->categoria = $request->get('categoria');
+        $usuarios->sucursales = $request->get('sucursales');
+        $usuarios->nombre = $request->get('nombre');
+        $usuarios->apellido = $request->get('apellido');
+        $usuarios->telefono = $request->get('telefono');
+        $usuarios->email = $request->get('email');
+        $usuarios->password = $request->get('password');
+        $usuarios->direccion_local = $request->get('direccion_local');
+        $usuarios->ref = $request->get('ref');
 
         $usuarios->save();
-
+        $usuarios->destroy();
         return redirect('/usuarios');
     }
 
@@ -106,6 +126,8 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::find($id);
         $usuarios->delete();
+      
         return redirect('/usuarios');
     }
+    
 }

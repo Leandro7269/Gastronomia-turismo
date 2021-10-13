@@ -10,4 +10,17 @@ class Usuario extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = [
+        'nombre_local', 
+        'tipo_de_negocio', 
+        'categoria', 
+        'sucursales',
+        'nombre',
+        'apellido',
+        'telefono',
+        'email',
+        'password',
+        'direccion_local',
+        'ref',
+    ];
 }
